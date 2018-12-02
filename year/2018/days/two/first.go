@@ -2,22 +2,23 @@ package main
 
 import (
 	"fmt"
-	"github.com/pkg/errors"
 	"io/ioutil"
 	"log"
 	"os"
 	"strings"
+
+	"github.com/pkg/errors"
 )
 
 func main() {
 	var mainErr error
-	defer func(){
+	defer func() {
 		if mainErr != nil {
 			log.Fatalf("fatal error encountered: %v", mainErr)
 		}
 	}()
 
-	b, err := ioutil.ReadFile(fmt.Sprintf("days%ctwo%cinput.txt", os.PathSeparator, os.PathSeparator))
+	b, err := ioutil.ReadFile(fmt.Sprintf("year%c2018%cdays%ctwo%cinput.txt", os.PathSeparator, os.PathSeparator, os.PathSeparator, os.PathSeparator))
 	if err != nil {
 		mainErr = errors.Wrap(err, "read input file")
 		return
@@ -54,5 +55,5 @@ func main() {
 		}
 	}
 
-	fmt.Println("checksum:", twos * threes)
+	fmt.Println("checksum:", twos*threes)
 }
